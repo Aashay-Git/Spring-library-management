@@ -9,9 +9,11 @@ import com.example.librarymanagement.repository.CardRepository;
 import com.example.librarymanagement.repository.StudentRepository;
 import com.example.librarymanagement.repository.TransactionRepository;
 import com.example.librarymanagement.service.TransactionService;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -46,5 +48,20 @@ public class TransactionServiceImplementation implements TransactionService {
     @Override
     public List<Transaction> findAll() {
         return transactionRepository.findAll();
+    }
+
+    @Override
+    public Transaction returnBook(int cardid, int bookid) {
+
+        Transaction t = transactionRepository.findByBook_bookidAndCard_cardid(bookid, cardid).orElse(null);
+
+        if(t != null){
+            Date d = new Date();
+            t.setSubmitDate(d);
+
+            transactionRepository.save(t);
+            return  t;
+        }
+        throw new RuntimeException("Transaction not found");
     }
 }

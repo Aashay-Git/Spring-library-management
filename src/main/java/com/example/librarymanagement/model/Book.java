@@ -3,6 +3,7 @@ package com.example.librarymanagement.model;
 import com.example.librarymanagement.LibraryManagementApplication;
 import com.example.librarymanagement.enums.Genre;
 import com.example.librarymanagement.enums.TransactionStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class Book {
     @JoinColumn
     Author author;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "book")
     private List<Transaction> transactions = new ArrayList<>();
 

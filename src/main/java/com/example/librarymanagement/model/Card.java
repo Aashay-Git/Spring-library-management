@@ -2,6 +2,7 @@ package com.example.librarymanagement.model;
 
 import com.example.librarymanagement.enums.Status;
 import com.example.librarymanagement.enums.TransactionStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -32,6 +33,7 @@ public class Card {
     @JoinColumn
     Student student;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "card")
     private List<Transaction> transactions = new ArrayList<>();
 

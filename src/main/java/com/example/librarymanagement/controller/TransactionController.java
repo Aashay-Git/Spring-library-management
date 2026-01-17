@@ -26,13 +26,21 @@ public class TransactionController {
         }
     }
 
-    @GetMapping("findAllTransactions")
+    @GetMapping("/findAllTransactions")
     public List<Transaction> findAll(){
         try{
             return transactionService.findAll();
         }catch (Exception e){
             throw new RuntimeException(e);
         }
+    }
 
+    @PutMapping("/submit/{bookid}/{cardid}")
+    public Transaction submit(@PathVariable int bookid, @PathVariable int cardid){
+        try{
+            return transactionService.returnBook(cardid, bookid);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
 }

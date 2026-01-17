@@ -8,4 +8,5 @@ import java.util.List;
 public interface TransactionService {
     public String addTransaction(TransactionDTO transactionDTO);
     public List<Transaction> findAll();
+    public Transaction returnBook(int bookid, int cardid);
 }
