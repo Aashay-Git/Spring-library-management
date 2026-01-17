@@ -1,6 +1,7 @@
 package com.example.librarymanagement.service.implementations;
 
 import com.example.librarymanagement.dto.TransactionDTO;
+import com.example.librarymanagement.enums.TransactionStatus;
 import com.example.librarymanagement.model.Book;
 import com.example.librarymanagement.model.Card;
 import com.example.librarymanagement.model.Transaction;
@@ -58,6 +59,7 @@ public class TransactionServiceImplementation implements TransactionService {
         if(t != null){
             Date d = new Date();
             t.setSubmitDate(d);
+            t.setTransactionStatus(TransactionStatus.SUBMITTED);
 
             transactionRepository.save(t);
             return  t;
