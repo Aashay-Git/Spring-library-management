@@ -57,4 +57,13 @@ public class StudentController {
             throw new RuntimeException(e);
         }
     }
+
+    @DeleteMapping("/deleteStudent/{id}")
+    public String deleteStudent(@PathVariable int id){
+        try{
+            return studentService.deleteStudent(id);
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
 }

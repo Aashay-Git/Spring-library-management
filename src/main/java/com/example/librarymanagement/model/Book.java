@@ -1,7 +1,12 @@
 package com.example.librarymanagement.model;
 
+import com.example.librarymanagement.LibraryManagementApplication;
 import com.example.librarymanagement.enums.Genre;
+import com.example.librarymanagement.enums.TransactionStatus;
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "book")
@@ -20,6 +25,10 @@ public class Book {
     @ManyToOne
     @JoinColumn
     Author author;
+
+    @OneToMany(mappedBy = "book")
+    private List<Transaction> transactions = new ArrayList<>();
+
 
     public Book() {
     }

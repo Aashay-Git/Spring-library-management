@@ -1,11 +1,14 @@
 package com.example.librarymanagement.model;
 
 import com.example.librarymanagement.enums.Status;
+import com.example.librarymanagement.enums.TransactionStatus;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "card")
@@ -28,6 +31,9 @@ public class Card {
     @OneToOne
     @JoinColumn
     Student student;
+
+    @OneToMany(mappedBy = "card")
+    private List<Transaction> transactions = new ArrayList<>();
 
 //    public int getCardid() {
 //        return cardid;

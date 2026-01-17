@@ -56,4 +56,13 @@ public class StudentServiceImplementation implements StudentService {
         studentRepository.save(stu);
         return stu;
     }
+
+    @Override
+    public String deleteStudent(int id){
+        if(studentRepository.findById(id).orElse(null) == null){
+            return "Student not exists";
+        }
+        studentRepository.deleteById(id);
+        return "Student successfully deleted";
+    }
 }

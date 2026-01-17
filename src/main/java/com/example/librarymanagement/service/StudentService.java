@@ -11,4 +11,5 @@ public interface StudentService {
     Student findStudent(int id);
     List<Student> findAll();
     Student updateMobileNum(String mobileNum, int id);
+    String deleteStudent(int id);
 }

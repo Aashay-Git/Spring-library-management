@@ -31,10 +31,6 @@ public class BookServiceImplementation implements BookService {
         if (author != null) {
             book.setAuthor(author);
         } else {
-            // Depending on requirements, we might want to throw an exception if author is
-            // not found.
-            // For now, mirroring simple flow, if validation isn't strict we might proceed
-            // or error.
             throw new RuntimeException("Author not found");
         }
 
